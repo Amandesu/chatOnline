@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id = "test">
+        <div>12
+            <span>1</span>
+            <span></span>
+        </div>
+        <div class="ass">
+            <div></div>
+        </div>
+    </div>
+    <div id="remove">remove</div>
+    <script>
+            // 全局上下文环境下的变量不会被垃圾回收
+            // 闭包中的变量也会被垃圾回收
+            // setInterval里面的变量也会被垃圾回收
+            // setInterval函数不管有没有执行，它里面依赖的变量不会被垃圾回收
+    
+            // 但是当setInterval第二次函数执行的时候，会把清空第一次函数执行所开辟的内存空间(不会清空其依赖的变量)
+    
+            let m = () => {
+                let a = new Array(1000000)
+                return () => {
+                    console.log("111")
+                }
+            }
+            let b = m();
+         
+           
+        </script>
+</body>
+</html>

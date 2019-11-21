@@ -1,0 +1,55 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_global\node_modules\yarn\bin\yarn.js add react
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Program Files\Java\jdk1.8.0_211\jre\bin;C:\Users\MyPC\AppData\Local\Android\Sdk\platform-tools;D:\Git\cmd;C:\Program Files\nodejs\;C:\Users\MyPC\Downloads\curl-7.64.1\I386\curl;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\nodejs\node_global;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;D:\Microsoft VS Code\bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  10.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: F:\chatOnline\package.json: Unexpected token } in JSON at position 342
+      at JSON.parse (<anonymous>)
+      at C:\Program Files\nodejs\node_global\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files\nodejs\node_global\node_modules\yarn\lib\cli.js:304:30)
+      at C:\Program Files\nodejs\node_global\node_modules\yarn\lib\cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "koadev",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "dependencies": {
+      "koa": "^2.8.1",
+      "koa-bodyparser": "^3.2.0",
+      "koa-router": "^7.0.1",
+      "koa-static": "^3.0.0",
+      "koa-logger": "^3.0.0",
+      "koa-session-minimal": "^3.0.3",
+      "koa-mysql-session": "0.0.2",
+      "mysql": "^2.12.0",
+    },
+    "devDependencies": {
+      "@babel/plugin-transform-async-to-generator": "^7.5.0",
+      "fs-extra": "^8.1.0"
+    },
+    "scripts": {
+      "start": "node ./server/app.js"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

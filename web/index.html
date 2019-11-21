@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<body>
+    <div id="login">
+        <div>
+            <span >用户名</span>
+            <input id ="username" value="15999650670"/>
+        </div>
+        <div>
+            <span>密码</span>
+            <input id ="password" value="nima123456"/>
+        </div>
+        <div id="submit" >登录</div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div id="register">
+        <div>
+            <span >用户名</span>
+            <input id ="user_username"/>
+        </div>
+        <div>
+            <span>密码</span>
+            <input id ="user_password" value="ss111"/>
+        </div>
+        <div id="user_register" >注册</div>
+    </div>
+    <div style="height: 20px"></div>
+    <div id ="queryusername">
+            <div>
+                <span >用户名</span>
+                <input id ="username" value="15"/>
+            </div>
+            
+            <div id="sumbit" >查询</div>
+            <div>
+                <span>好友列表</span>
+                <ul id= "friendList">
+
+                </ul>
+            </div>
+
+        </div>
+</body>
+<script>
+    
+
+    // 登录
+    $("#login #submit").on("click", () => {
+        let username  = $("#login #username").val();
+        let password  = $("#login #password").val();
+        $.ajax({
+            url:"/user/login",
+            method:"POST",
+            data:{
+                username, password
+            },
+            success:res => {
+                console.log(res)
+            }
+        })
+    });
+    // 注册
+    $("#register #user_register").on("click", () => {
+        let username  = $("#register #user_username").val();
+        let password  = $("#register #user_password").val();
+        let str = "1";
+        for (let i = 0; i < 10; i++) {
+            str +=(Math.floor(Math.random()*10))
+        }
+        $.ajax({
+            url:"/user/register",
+            method:"POST",
+            data:{
+                username:str,
+                password
+            },
+            success:res => {
+                console.log(res)
+            }
+        })
+    });
+    
+    // 查询
+    
+    (function(){
+        let data = [];
+        $("#queryusername #sumbit").on("click", () => {
+            $.ajax({
+                url:"/user/queryUsersByName",
+                method:"GET",
+                data:{
+                    username:$("#queryusername #username").val()
+                },
+                success:res => {
+                    data = res.data ||[]
+                    $("#friendList").empty();
+                    $("#friendList").append(data.map((item,index) => `<li>${item.username}<span index=${index}>添加</span></li>`))
+                }
+            })
+        })
+        // 添加好友
+        $("#friendList").on("click", function(e) {
+            let index = $(e.target).attr("index");
+            let friend = data[index];
+            $.ajax({
+                url:"/friend/postApplyFriendMsg",
+                method:"POST",
+                data:{
+                    username:friend.username,
+                },
+                success:res => {
+                }
+            })
+        })
+    })()
+
+    
+    
+
+</script>
+</html>

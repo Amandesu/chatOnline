@@ -8,29 +8,24 @@ const login =  async ( formData ) => {
     return resultData
 }
 
-const register =  async ( formData ) => {
-    let resultData = await userModel.resiger({
-      'username': formData.username,
-      'password': formData.password})
-    return resultData
-}
-const getExistOne = async (formData) => {
-    let resultData = await userModel.getExistOne({
+// 精确查询单个用户
+const queryUserByName  = async (formData) => {
+    let resultData = await userModel.queryUserByName({
         'username': formData.username
     })
     return resultData
 }
-const queryUsersByName  = async (formData) => {
-    let resultData = await userModel.queryUsersByName({
-        'username': formData.username
+// 模糊查询多个用户
+const queryUsersLikeName =  async (formData) => {
+    let resultData = await userModel.queryUsersLikeName({
+        'key': formData.key
     })
     return resultData
 }
+
 
 
 module.exports = {
-    register,
-    getExistOne,
-    queryUsersByName,
-    login
+    login,
+    queryUsersLikeName
 }

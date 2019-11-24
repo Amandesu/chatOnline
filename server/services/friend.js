@@ -17,6 +17,7 @@ const postApplyFriendMsg  = async (useResult, friendResult) => {
 }
 
 
+
 module.exports = {
     postApplyFriendMsg
 }

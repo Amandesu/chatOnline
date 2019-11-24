@@ -9,6 +9,17 @@ async function login(options) {
     let result = await dbUtils.query(_sql)
     return result
 }
+// 模糊查询多个用户
+async function queryUsersLikeName(options) {
+  let _sql = `
+  SELECT * from users
+      where username LIKE "${options.key}%"
+  `
+  let result = await dbUtils.query(_sql)
+  return result
+}
+
+
 /* // 创建用户
 async function resiger(options) {
     let result = await dbUtils.insertData("user", options)
@@ -40,5 +51,5 @@ async function queryUsersByName(options){
 }
  */
 module.exports = {
-    login
+    login, queryUsersLikeName
 }

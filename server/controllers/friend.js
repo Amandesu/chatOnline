@@ -9,7 +9,7 @@ let _result = () => ({
     code: ""
 })
 
-const postApplyFriendMsg = async (ctx) => {
+const addFriend = async (ctx) => {
     let result = _result();
     let formData = ctx.request.body;
     let postResult;
@@ -21,7 +21,7 @@ const postApplyFriendMsg = async (ctx) => {
     let friendResults = await userService.queryUsersByName( {
         username:formData.username
     });
-    try{
+    /* try{
         postResult = await freindService.postApplyFriendMsg(userResults[0], friendResults[0]);
         if (postResult) {
             result.code = 200
@@ -32,7 +32,8 @@ const postApplyFriendMsg = async (ctx) => {
             result.code = 100;
             result.message = "好友已添加无需重复添加"
         }
-    }
+    } */
+    
     ctx.body = result
 
 }

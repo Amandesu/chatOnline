@@ -5,12 +5,10 @@ const bodyParser = require('koa-bodyparser')
 const koaLogger = require('koa-logger')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
-//const RedisStore = require('./redisStore')
+const SeesionRedis = require("./utils/seesion-redis")
 const routers = require('./routers/index')
 const config = require('./config')
 
-const redis = require("redis");
-const redisStore = require("koa-redis");
 
 
 const app = new Koa()
@@ -18,7 +16,7 @@ const app = new Koa()
 // 配置session中间件
 app.use(session({
     key: 'SESSION_ID',
-    store: redisStore({}),
+    store: new SeesionRedis(),
     cookie: {
         httpOnly:true,
        // overwrite:true,

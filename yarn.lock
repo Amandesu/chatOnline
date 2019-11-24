@@ -540,6 +540,21 @@ invariant@^2.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
+ioredis@^4.14.1:
+  version "4.14.1"
+  resolved "https://registry.npm.taobao.org/ioredis/download/ioredis-4.14.1.tgz?cache=0&sync_timestamp=1574444192323&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fioredis%2Fdownload%2Fioredis-4.14.1.tgz#b73ded95fcf220f106d33125a92ef6213aa31318"
+  integrity sha1-tz3tlfzyIPEG0zElqS72ITqjExg=
+  dependencies:
+    cluster-key-slot "^1.1.0"
+    debug "^4.1.1"
+    denque "^1.1.0"
+    lodash.defaults "^4.2.0"
+    lodash.flatten "^4.4.0"
+    redis-commands "1.5.0"
+    redis-errors "^1.2.0"
+    redis-parser "^3.0.0"
+    standard-as-callback "^2.0.1"
+
 ioredis@^4.9.0:
   version "4.14.1"
   resolved "https://registry.npm.taobao.org/ioredis/download/ioredis-4.14.1.tgz#b73ded95fcf220f106d33125a92ef6213aa31318"

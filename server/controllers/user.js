@@ -1,6 +1,5 @@
 
 const userService = require('./../services/user')
-const redisStore = require("../redisStore.js")
 let _resultSuccess = () => ({
     data: {},
     message: '操作成功',

@@ -28,6 +28,9 @@
             <input id ="username" value=""/>
         </div>
         <div id="submit" >查询</div>
+        <div id="list">
+
+        </div>
     </div>
     <div style="height: 20px"></div>
 
@@ -59,7 +62,26 @@
                 key:username
             },
             success:res => {
-                console.log(res)
+                $("#search_uses #list").html(
+                    res.data.map(item =>  `<div>${item.username}<button username="${item.username}" aliaName="${item.aliaName}">添加</button></div>`).join("")
+                )
+                $("#search_uses button").on("click", function() {
+                    let username = $(this).attr("username")
+                    let aliaName = $(this).attr("aliaName")
+                    
+
+                    $.ajax({
+                        url:"/friend/reqFriend",
+                        method:"POST",
+                        data:{
+                            username,
+                            aliaName
+                        },
+                        success:res => {
+                            console.log(res)
+                        }
+                    })
+                })
             }
         })
     })

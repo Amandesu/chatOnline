@@ -9,7 +9,7 @@ const login = async (ctx) => {
     let userResult = await userService.login( formData );
 
     if (userResult && userResult[0]) {
-        ctx.session.loginStatus = 1;
+        ctx.session.user = userResult[0];
     }
     ctx.body = result
 }
@@ -17,11 +17,12 @@ const login = async (ctx) => {
 const queryUsersLikeName =  async (ctx) => {
     let result = {};
     let formData = ctx.query
-    let userResult = await userService.queryUsersLikeName( formData );
-    if (userResult && userResult[0]) {
+    let userResults = await userService.queryUsersLikeName( formData );
+    if (userResults && userResults[0]) {
+        userResults.forEach(result => result.createTime = +new Date(result.createTime))
         ctx.body =  createResult({
             code:"200",
-            data:userResult
+            data:userResults
         })
     } 
     

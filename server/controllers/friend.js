@@ -34,13 +34,14 @@ const addFriend = async (ctx) => {
 const queryReqFris =  async (ctx) => {
     let formData = ctx.query;
     let userResults = [];
+    console.log(ctx.session)
     if (formData.isSend == 1) {
         userResults = await freindService.queryReqFris( {
-            username:formData.username
+            username:ctx.session.user.username
        });
     } else {
         userResults = await freindService.queryResFris( {
-            username:formData.username
+            username:ctx.session.user.username
        });
     }
     if (userResults) {

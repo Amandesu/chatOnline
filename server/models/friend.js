@@ -28,12 +28,12 @@ SELECT * from friend_req
 async function addFriend(options) {
     //let result = await dbUtils.insertData("friend_req", options)
     let sql = "INSERT INTO friends SET ?";
-    let _sql = `UPDATE friend_req SET ? where user = ${options.friend}`;
+    let _sql = `UPDATE friend_req SET ? where user = ${options.friend} and  receiverUser = ${options.username}`;
     console.log(_sql)
     let result = await dbUtils.queryWithTrans([
         { sql, values:[{user:options.username,friend:options.friend}] },
         { sql, values:[{user:options.friend,friend:options.username}] },
-        {sql:_sql, values:[{status:"0"}]}
+        {sql:_sql, values:[{status:"2"}]}
     ]).then((err) => {
         console.log(err)
     })

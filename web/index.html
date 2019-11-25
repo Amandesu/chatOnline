@@ -100,7 +100,6 @@
             url:"/friend/queryReqFris",
             method:"GET",
             data:{
-                username,
                 isSend:1
             },
             success:res => {
@@ -108,11 +107,11 @@
                     "0":"已拒绝",
                     "1": "等待同意中",
                     "2":"已同意",
-                    "3":"已拒绝"
+                    "3":"已超时"
                 }
                 $("#search_uses #list1").html(
                     
-                    res.data.map(item =>  `<div>${item.recAliaName}<span><${map[item.status]}</span></div>`).join("")
+                    res.data.map(item =>  `<div>${item.receiverUser}用户<span><${map[item.status]}</span></div>`).join("")
                 )
             }
         })
@@ -124,7 +123,6 @@
             url:"/friend/queryReqFris",
             method:"GET",
             data:{
-                username,
                 isSend:0
             },
             success:res => {
@@ -132,11 +130,11 @@
                     "0":"已拒绝",
                     "1": "等待同意中",
                     "2":"已同意",
-                    "3":"已拒绝"
+                    "3":"已超时"
                 }
                 $("#search_uses #list2").html(
                     
-                    res.data.map(item =>  `<div>${item.recAliaName}<span><${map[item.status]}</span><button username="${item.user}">同意</button></div>`).join("")
+                    res.data.map(item =>  `<div>${item.user}用户<span><${map[item.status]}</span><button username="${item.user}">同意</button></div>`).join("")
                 )
 
                 $("#search_uses #list2 button").on("click", function() {

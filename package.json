@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "async": "^3.1.0",
     "ioredis": "^4.14.1",
     "koa": "^2.8.1",
     "koa-bodyparser": "^3.2.0",

@@ -170,6 +170,11 @@ asap@~2.0.3:
   resolved "https://registry.npm.taobao.org/asap/download/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
+async@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/async/download/async-3.1.0.tgz#42b3b12ae1b74927b5217d8c0016baaf62463772"
+  integrity sha1-QrOxKuG3SSe1IX2MABa6r2JGN3I=
+
 bignumber.js@7.2.1:
   version "7.2.1"
   resolved "https://registry.npm.taobao.org/bignumber.js/download/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
@@ -540,24 +545,9 @@ invariant@^2.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
-ioredis@^4.14.1:
+ioredis@^4.14.1, ioredis@^4.9.0:
   version "4.14.1"
   resolved "https://registry.npm.taobao.org/ioredis/download/ioredis-4.14.1.tgz?cache=0&sync_timestamp=1574444192323&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fioredis%2Fdownload%2Fioredis-4.14.1.tgz#b73ded95fcf220f106d33125a92ef6213aa31318"
-  integrity sha1-tz3tlfzyIPEG0zElqS72ITqjExg=
-  dependencies:
-    cluster-key-slot "^1.1.0"
-    debug "^4.1.1"
-    denque "^1.1.0"
-    lodash.defaults "^4.2.0"
-    lodash.flatten "^4.4.0"
-    redis-commands "1.5.0"
-    redis-errors "^1.2.0"
-    redis-parser "^3.0.0"
-    standard-as-callback "^2.0.1"
-
-ioredis@^4.9.0:
-  version "4.14.1"
-  resolved "https://registry.npm.taobao.org/ioredis/download/ioredis-4.14.1.tgz#b73ded95fcf220f106d33125a92ef6213aa31318"
   integrity sha1-tz3tlfzyIPEG0zElqS72ITqjExg=
   dependencies:
     cluster-key-slot "^1.1.0"

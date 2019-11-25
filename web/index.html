@@ -25,10 +25,18 @@
     <div id="search_uses"">
         <div>
             <span >用户名</span>
-            <input id ="username" value=""/>
+            <input id ="username" value="13"/>
         </div>
-        <div id="submit" >查询</div>
-        <div id="list">
+        <div id="submit" >查询好友</div>
+        <div id="list" style="display:flex; flex-wrap: wrap">
+
+        </div>
+        <div id="submit1" >查询发送的好友请求</div>
+        <div id="list1" style="">
+
+        </div>
+        <div id="submit2" >查询收到的好友请求</div>
+        <div id="list2" style="">
 
         </div>
     </div>
@@ -68,14 +76,77 @@
                 $("#search_uses button").on("click", function() {
                     let username = $(this).attr("username")
                     let aliaName = $(this).attr("aliaName")
-                    
-
                     $.ajax({
                         url:"/friend/reqFriend",
                         method:"POST",
                         data:{
                             username,
                             aliaName
+                        },
+                        success:res => {
+                            console.log(res)
+                        }
+                    })
+                })
+            }
+        })
+    })
+
+    // 查询发送的好友请求
+    $("#search_uses #submit1").on("click", () => {
+        let username  = $("#login #username").val();
+        console.log(username)
+        $.ajax({
+            url:"/friend/queryReqFris",
+            method:"GET",
+            data:{
+                username,
+                isSend:1
+            },
+            success:res => {
+                let map = {
+                    "0":"已拒绝",
+                    "1": "等待同意中",
+                    "2":"已同意",
+                    "3":"已拒绝"
+                }
+                $("#search_uses #list1").html(
+                    
+                    res.data.map(item =>  `<div>${item.recAliaName}<span><${map[item.status]}</span></div>`).join("")
+                )
+            }
+        })
+    })
+    // 查询发送的好友请求
+    $("#search_uses #submit2").on("click", () => {
+        let username  = $("#login #username").val();
+        $.ajax({
+            url:"/friend/queryReqFris",
+            method:"GET",
+            data:{
+                username,
+                isSend:0
+            },
+            success:res => {
+                let map = {
+                    "0":"已拒绝",
+                    "1": "等待同意中",
+                    "2":"已同意",
+                    "3":"已拒绝"
+                }
+                $("#search_uses #list2").html(
+                    
+                    res.data.map(item =>  `<div>${item.recAliaName}<span><${map[item.status]}</span><button username="${item.user}">同意</button></div>`).join("")
+                )
+
+                $("#search_uses #list2 button").on("click", function() {
+                    let username = $(this).attr("username")
+
+                    $.ajax({
+                        url:"/friend/addFriend",
+                        method:"POST",
+                        data:{
+                            friend:username,
                         },
                         success:res => {
                             console.log(res)

@@ -14,7 +14,7 @@ const config = require('./config')
 const app = new Koa()
 
 // 配置session中间件
-app.use(session({
+/* app.use(session({
     key: 'SESSION_ID',
     store: new SeesionRedis(),
     cookie: {
@@ -23,7 +23,7 @@ app.use(session({
         path:"/",
         maxAge: 3600000
     }
-}))
+})) */
  
 // 配置ctx.body解析中间件
 app.use(bodyParser())

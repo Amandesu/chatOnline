@@ -1,6 +1,6 @@
 const config = {
 
-    port: 3001,
+    port: 8080,
   
     database: {
       DATABASE: 'chatonline',

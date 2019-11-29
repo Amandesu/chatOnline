@@ -5,7 +5,7 @@ const bodyParser = require('koa-bodyparser')
 const koaLogger = require('koa-logger')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
-const SeesionRedis = require("./utils/seesion-redis")
+//const SeesionRedis = require("./utils/seesion-redis")
 const routers = require('./routers/index')
 const config = require('./config')
 

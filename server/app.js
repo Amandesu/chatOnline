@@ -5,7 +5,7 @@ const bodyParser = require('koa-bodyparser')
 const koaLogger = require('koa-logger')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
-//const SeesionRedis = require("./utils/seesion-redis")
+const SeesionRedis = require("./utils/seesion-redis")
 const routers = require('./routers/index')
 const config = require('./config')
 
@@ -14,8 +14,8 @@ const config = require('./config')
 const app = new Koa()
 
 // 配置session中间件
-/* app.use(session({
-    key: 'SESSION_ID',
+app.use(session({
+ key: 'SESSION_ID',
     store: new SeesionRedis(),
     cookie: {
         httpOnly:true,
@@ -23,7 +23,7 @@ const app = new Koa()
         path:"/",
         maxAge: 3600000
     }
-})) */
+})) 
  
 // 配置ctx.body解析中间件
 app.use(bodyParser())

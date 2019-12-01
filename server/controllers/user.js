@@ -28,7 +28,7 @@ const login = async (ctx) => {
 
     if (userResult && userResult[0]) {
         ctx.session.user = userResult[0];
-        ctx.body = createSucResult({})
+        ctx.body = createSucResult({message:"登录成功"})
     } else {
         ctx.body = createFailResult({message:"登录失败"})
     }

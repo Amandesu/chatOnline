@@ -19,7 +19,7 @@ const login =  async ( formData ) => {
 const queryUserByName  = async (formData) => {
     let resultData = await userModel.queryUserByName({
         'username': formData.username
-    })
+    });
     return resultData
 }
 // 模糊查询多个用户

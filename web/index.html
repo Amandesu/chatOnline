@@ -9,6 +9,17 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <body>
+    <div id="register">
+            <div>
+                <span >用户名</span>
+                <input id ="username" value=""/>
+            </div>
+            <div>
+                <span>密码</span>
+                <input id ="password" value="123456"/>
+            </div>
+            <div id="submit" >注册</div>
+        </div>
     <div id="login">
         <div>
             <span >用户名</span>
@@ -44,6 +55,21 @@
 
 </body>
 <script>
+    // 注册
+    $("#register #submit").on("click", () => {
+        let username  = $("#register #username").val();
+        let password  = $("#register #password").val();
+        $.ajax({
+            url:"/user/register",
+            method:"POST",
+            data:{
+                username, password
+            },
+            success:res => {
+                console.log(res)
+            }
+        })
+    });
     // 登录
     $("#login #submit").on("click", () => {
         let username  = $("#login #username").val();

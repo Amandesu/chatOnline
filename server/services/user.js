@@ -1,6 +1,13 @@
 
 const userModel = require('./../models/user')
 
+const register =  async ( formData ) => {
+    let resultData = await userModel.register({
+      'username': formData.username,
+      'password': formData.password})
+    return resultData
+}
+
 const login =  async ( formData ) => {
     let resultData = await userModel.login({
       'username': formData.username,
@@ -26,6 +33,8 @@ const queryUsersLikeName =  async (formData) => {
 
 
 module.exports = {
+    register,
     login,
+    queryUserByName,
     queryUsersLikeName
 }

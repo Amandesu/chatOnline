@@ -1,4 +1,10 @@
 const dbUtils = require('./../utils/dbUtils')
+// 注册
+async function register(options) {
+
+  let result = await dbUtils.insertData("users", options)
+  return result
+}
 
 // 登录
 async function login(options) {
@@ -18,7 +24,15 @@ async function queryUsersLikeName(options) {
   let result = await dbUtils.query(_sql)
   return result
 }
-
+// 模糊查询多个用户
+async function queryUserByName(options) {
+  let _sql = `
+  SELECT * from users
+      where username = "${options.username}"
+  `
+  let result = await dbUtils.query(_sql)
+  return result
+}
 
 /* // 创建用户
 async function resiger(options) {
@@ -51,5 +65,5 @@ async function queryUsersByName(options){
 }
  */
 module.exports = {
-    login, queryUsersLikeName
+  register, login, queryUsersLikeName, queryUserByName
 }

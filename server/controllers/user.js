@@ -6,6 +6,7 @@ const { createSucResult, createFailResult } = require("../utils/createResult")
 // 注册
 const register = async (ctx) => {
     let formData = ctx.request.body;
+    console.log(formData.username)
     let loginResult = await userService.queryUserByName({username:formData.username} );
     console.log(loginResult)
     if (loginResult && loginResult.length) {

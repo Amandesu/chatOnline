@@ -4,6 +4,7 @@ const userModel = require('./../models/user')
 const register =  async ( formData ) => {
     let resultData = await userModel.register({
       'username': formData.username,
+      'aliaName':formData.username+"用户",
       'password': formData.password})
     return resultData
 }
@@ -29,12 +30,19 @@ const queryUsersLikeName =  async (formData) => {
     })
     return resultData
 }
-
+// 模糊查询多个用户(可以添加朋友的)
+const queryUsersToFris =  async (formData) => {
+    let resultData = await userModel.queryUsersToFris({
+        'key': formData.key
+    })
+    return resultData
+}
 
 
 module.exports = {
     register,
     login,
     queryUserByName,
-    queryUsersLikeName
+    queryUsersLikeName,
+    queryUsersToFris,
 }

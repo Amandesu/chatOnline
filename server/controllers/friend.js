@@ -1,7 +1,7 @@
 
 const freindService = require('./../services/friend')
 const userService = require('./../services/user')
-const { createSucResult } = require("../utils/createResult")
+const { createSucResult, createFailResult } = require("../utils/createResult")
 
 let _result = () => ({
     data: {},
@@ -9,6 +9,10 @@ let _result = () => ({
     code: ""
 })
 const reqFriend = async (ctx) => {
+    if (!ctx.session.user) {
+        ctx.body = createFailResult({});
+        return;
+    }
     let formData = ctx.request.body;
     let userResults = await freindService.reqFriend( {
          receiverUser:formData.username,
@@ -21,29 +25,33 @@ const reqFriend = async (ctx) => {
     }
 }
 const addFriend = async (ctx) => {
+    if (!ctx.session.user) {
+        ctx.body = createFailResult({});
+        return;
+    }
     let formData = ctx.request.body;
     let userResults = await freindService.addFriend( {
         'username':ctx.session.user.username,
         'friend':formData.friend
     });
+    console.log(userResults)
     if (userResults) {
         ctx.body = createSucResult({});
     }
 }
 
 const queryReqFris =  async (ctx) => {
+    if (!ctx.session.user) {
+        ctx.body = createFailResult({});
+        return;
+    }
     let formData = ctx.query;
     let userResults = [];
-    console.log(ctx.session)
-    if (formData.isSend == 1) {
-        userResults = await freindService.queryReqFris( {
-            username:ctx.session.user.username
-       });
-    } else {
-        userResults = await freindService.queryResFris( {
-            username:ctx.session.user.username
-       });
-    }
+
+    userResults = await freindService.queryReqFris( {
+        username:ctx.session.user.username,
+        isSend:formData.isSend || null
+   });
     if (userResults) {
         ctx.body = createSucResult({
             data:userResults

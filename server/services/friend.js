@@ -14,13 +14,8 @@ const reqFriend  = async (formData) => {
 }
 const queryReqFris = async (formData) => {
     let resultData = await friendModel.queryReqFris({
-        'username':formData.username
-    }) 
-    return resultData
-}
-const queryResFris = async (formData) => {
-    let resultData = await friendModel.queryResFris({
-        'username':formData.username
+        'username':formData.username,
+        'isSend':formData.isSend
     }) 
     return resultData
 }
@@ -29,12 +24,13 @@ const addFriend = async (formData) => {
         'username':formData.username,
         'friend':formData.friend
     }) 
+    console.log(resultData)
     return resultData
 }
 
 
 
 module.exports = {
-    reqFriend, queryReqFris, queryResFris, addFriend
+    reqFriend, queryReqFris, addFriend
     
 }

@@ -28,7 +28,7 @@ const login = async (ctx) => {
 
     if (userResult && userResult[0]) {
         ctx.session.user = userResult[0];
-        ctx.body = createSucResult({message:"登录成功"})
+        ctx.body = createSucResult({message:"登录成功", data:userResult[0]})
     } else {
         ctx.body = createFailResult({message:"登录失败"})
     }
@@ -44,6 +44,23 @@ const queryUsersLikeName =  async (ctx) => {
         ctx.body =  createSucResult({
             data:userResults
         })
+    } else {
+        ctx.body =  createSucResult({
+            data:[]
+        })
+    }
+    
+}
+// 模糊查询可以添加好友的用户
+const queryUsersToFris =  async (ctx) => {
+    let result = {};
+    let formData = ctx.query
+    let userResults = await userService.queryUsersToFris( formData );
+    if (userResults && userResults[0]) {
+        userResults.forEach(result => result.createTime = +new Date(result.createTime))
+        ctx.body =  createSucResult({
+            data:userResults
+        })
     } 
     
 }
@@ -51,5 +68,6 @@ const queryUsersLikeName =  async (ctx) => {
 module.exports = {
     register,
     login,
-    queryUsersLikeName
+    queryUsersLikeName,
+    queryUsersToFris
 }

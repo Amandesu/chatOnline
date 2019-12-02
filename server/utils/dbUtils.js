@@ -37,7 +37,7 @@ let queryWithTrans = async (sqlparamsEntities) => {
     return new Promise((resolve, reject) => {
         pool.getConnection(function (err, connection) {
             if (err) {
-                resolve(err)
+                reject(err)
             } else {
                 connection.beginTransaction(function (err) {
                     if (err) {
@@ -80,7 +80,7 @@ let queryWithTrans = async (sqlparamsEntities) => {
                                     });
                                 } else {
                                     connection.release();
-                                    return reject(null, info);
+                                    return resolve(info);
                                 }
                             })
                         }

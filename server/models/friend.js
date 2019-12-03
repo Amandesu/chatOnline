@@ -27,15 +27,14 @@ async function queryReqFris(options) {
     return result
 }
 
-async function queryUsersToFris(options) {
+async function getFriendList(options) {
     let _sql = `
-SELECT * from friend_req
-    where receiverUser = "${options.username}"
+    select friends.friend, users.aliaName from friends left join users on friends.friend = users.username  where friends.user = "${options.username}"
 `
+
     let result = await dbUtils.query(_sql)
     return result
 }
-//queryUsersToFris
 
 
 // 同意朋友申请
@@ -56,5 +55,6 @@ async function addFriend(options) {
 module.exports = {
     reqFriend,
     queryReqFris,
-    addFriend
+    addFriend,
+    getFriendList
 }

@@ -27,10 +27,17 @@ const addFriend = async (formData) => {
     console.log(resultData)
     return resultData
 }
+const getFriendList = async (formData) => {
+    let resultData = await friendModel.getFriendList({
+        'username':formData.username,
+    }) 
+    return resultData
+}
+
 
 
 
 module.exports = {
-    reqFriend, queryReqFris, addFriend
+    reqFriend, queryReqFris, addFriend, getFriendList
     
 }

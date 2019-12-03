@@ -58,8 +58,24 @@ const queryReqFris =  async (ctx) => {
         })
     }
 }
+const getFriendList = async (ctx) => {
+    if (!ctx.session.user) {
+        ctx.body = createFailResult({});
+        return;
+    }
+    let formData = ctx.query;
+    let userResults = await freindService.getFriendList( {
+        username:ctx.session.user.username,
+    });
+    if (userResults) {
+        ctx.body = createSucResult({ data:userResults })
+    } else {
+        ctx.body = createFailResult({});
+    }
+
+}
 
 
 module.exports = {
-    reqFriend, addFriend, queryReqFris
+    reqFriend, addFriend, queryReqFris, getFriendList
 }

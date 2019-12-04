@@ -33,7 +33,7 @@ async function queryUsersLikeName(options) {
   let result = await dbUtils.query(_sql)
   return result
 }
-// 模糊查询多个用户
+// 查询单个用户
 async function queryUserByName(options) {
   let _sql = `
   SELECT username, aliaName, posterUrl, createTime from users

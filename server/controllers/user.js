@@ -6,7 +6,7 @@ const { createSucResult, createFailResult } = require("../utils/createResult")
 // 注册
 const register = async (ctx) => {
     let formData = ctx.request.body;
-    let loginResult = await userService.queryUserByName({username:ctx.session.user.username} );
+    let loginResult = await userService.queryUserByName({username:formData.username} );
     if (loginResult && loginResult.length) {
         ctx.body = createFailResult({message:"该账户已注册"});
         return;

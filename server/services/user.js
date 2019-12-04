@@ -15,7 +15,12 @@ const login =  async ( formData ) => {
       'password': formData.password})
     return resultData
 }
-
+const getUserInfo =  async ( formData ) => {
+    let resultData = await userModel.getUserInfo({
+      'username': formData.username,
+    })
+    return resultData
+}
 // 精确查询单个用户
 const queryUserByName  = async (formData) => {
     let resultData = await userModel.queryUserByName({
@@ -42,6 +47,7 @@ const queryUsersToFris =  async (formData) => {
 module.exports = {
     register,
     login,
+    getUserInfo,
     queryUserByName,
     queryUsersLikeName,
     queryUsersToFris,

@@ -9,10 +9,6 @@ let _result = () => ({
     code: ""
 })
 const reqFriend = async (ctx) => {
-    if (!ctx.session.user) {
-        ctx.body = createFailResult({});
-        return;
-    }
     let formData = ctx.request.body;
     let userResults = await freindService.reqFriend( {
          receiverUser:formData.username,
@@ -25,10 +21,6 @@ const reqFriend = async (ctx) => {
     }
 }
 const addFriend = async (ctx) => {
-    if (!ctx.session.user) {
-        ctx.body = createFailResult({});
-        return;
-    }
     let formData = ctx.request.body;
     let userResults = await freindService.addFriend( {
         'username':ctx.session.user.username,
@@ -41,10 +33,6 @@ const addFriend = async (ctx) => {
 }
 
 const queryReqFris =  async (ctx) => {
-    if (!ctx.session.user) {
-        ctx.body = createFailResult({});
-        return;
-    }
     let formData = ctx.query;
     let userResults = [];
 
@@ -59,10 +47,6 @@ const queryReqFris =  async (ctx) => {
     }
 }
 const getFriendList = async (ctx) => {
-    if (!ctx.session.user) {
-        ctx.body = createFailResult({});
-        return;
-    }
     let formData = ctx.query;
     let userResults = await freindService.getFriendList( {
         username:ctx.session.user.username,

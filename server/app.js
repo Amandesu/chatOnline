@@ -10,6 +10,7 @@ const MysqlStore = require('koa-mysql-session')
 const SeesionRedis = require("./utils/seesion-redis")
 const routers = require('./routers/index')
 const config = require('./config')
+const { createFailResult } = require('./utils/createResult')
 
 
 
@@ -36,6 +37,15 @@ app.use(koaLogger())
 app.use(koaStatic(
     path.join(__dirname, './../web')
 ))
+app.use( async (ctx, next) => {
+    if (ctx.session.user || ctx.request.url == "/user/login" || ctx.request.url == "/user/register") {
+        return await next();
+    } else {
+        ctx.body = createFailResult({})
+    }
+   
+})
+
 // 初始化路由中间件
 app.use(routers.routes()).use(routers.allowedMethods())
 

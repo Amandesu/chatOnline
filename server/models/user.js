@@ -36,7 +36,7 @@ async function queryUsersLikeName(options) {
 // 模糊查询多个用户
 async function queryUserByName(options) {
   let _sql = `
-  SELECT username, aliaName, posterUrl, createTime, from users
+  SELECT username, aliaName, posterUrl, createTime from users
       where username = "${options.username}"
   `
   let result = await dbUtils.query(_sql)

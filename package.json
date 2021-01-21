@@ -19,7 +19,7 @@
     "react": "^16.10.2",
     "react-redux": "4.x",
     "redis": "^2.8.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-async-to-generator": "^7.5.0",

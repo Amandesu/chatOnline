@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "@types/redis": "^2.8.14",
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "ioredis": "^4.14.1",
     "koa": "^2.8.1",
     "koa-bodyparser": "^3.2.0",
